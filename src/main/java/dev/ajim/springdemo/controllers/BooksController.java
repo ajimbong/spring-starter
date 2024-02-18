@@ -22,13 +22,13 @@ public class BooksController {
         return this.books;
     }
 
-    @GetMapping("/?page=")
-    public List<Book> getPage(){
-        books.add(new Book("Jonathan", "React One"));
-        books.add(new Book("Jimmy", "Java First"));
-
-        return this.books;
-    }
+//    @GetMapping("/?page=")
+//    public List<Book> getPage(){
+//        books.add(new Book("Jonathan", "React One"));
+//        books.add(new Book("Jimmy", "Java First"));
+//
+//        return this.books;
+//    }
 
     @GetMapping("/{id}")
     public String getBookById(@PathVariable String id){
@@ -43,13 +43,13 @@ public class BooksController {
         return content;
     }
 
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public String updateBook(@RequestBody Content content, @PathVariable String id){
-        if(content == null)
-            throw  new ResponseStatusException(HttpStatus.BAD_REQUEST, "No value provided");
-        return id + ": Successfully update";
-    }
+//    @PutMapping("/{id}")
+//    @ResponseStatus(HttpStatus.ACCEPTED)
+//    public String updateBook(@RequestBody Content content, @PathVariable String id){
+//        if(content == null)
+//            throw  new ResponseStatusException(HttpStatus.BAD_REQUEST, "No value provided");
+//        return id + ": Successfully update";
+//    }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
