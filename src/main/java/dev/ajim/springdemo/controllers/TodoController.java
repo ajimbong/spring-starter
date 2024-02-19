@@ -2,6 +2,11 @@ package dev.ajim.springdemo.controllers;
 
 import dev.ajim.springdemo.models.TodoDTO;
 import dev.ajim.springdemo.models.TodoEntity;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +29,7 @@ public class TodoController {
         this.todos = todos;
     }
 
+    @Operation(summary = "Get a list of all the todo entities")
     @GetMapping()
     public List<TodoEntity> getTodos(@RequestParam(required = false) String param) {
         if(param != null){
@@ -32,6 +38,7 @@ public class TodoController {
         return todos;
     }
 
+    @Operation(summary = "Get a particular todo by ID")
     @GetMapping("{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public TodoEntity getTodoByID(@PathVariable String id){
@@ -57,6 +64,7 @@ public class TodoController {
 
     }
 
+    @Operation(summary = "Create a new Todo")
     @PostMapping()
     public ResponseEntity<TodoEntity> createTodo(@Valid @RequestBody TodoDTO todo){
             todo.setId(todos.size() + 1);
@@ -66,6 +74,7 @@ public class TodoController {
             return new ResponseEntity<>(newTodo, HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Update an existing Todo by ID")
     @PutMapping("/{id}")
     public ResponseEntity<TodoEntity> updateTdo(@Valid @RequestBody TodoDTO todo, @PathVariable String id) {
 
