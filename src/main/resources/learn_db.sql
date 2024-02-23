@@ -52,7 +52,7 @@ create table branch
 (
     id INT AUTO_INCREMENT PRIMARY KEY,
     branch_name varchar(128),
-    mgr_id INT,
+    mgr_id INT UNIQUE ,
     mgr_start_date DATE,
     FOREIGN KEY(mgr_id) REFERENCES employee(id) ON DELETE SET NULL
 );
