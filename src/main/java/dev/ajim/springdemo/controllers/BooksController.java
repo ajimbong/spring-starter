@@ -39,7 +39,7 @@ public class BooksController {
    @ResponseStatus(HttpStatus.ACCEPTED)
     public Content saveBook(@RequestBody Content content){
         if(content == null)
-            throw  new ResponseStatusException(HttpStatus.BAD_REQUEST, "No value provided");
+            throw  new ResponseStatusException(HttpStatus.BAD_REQUEST, "No value provided!");
         return content;
     }
 
